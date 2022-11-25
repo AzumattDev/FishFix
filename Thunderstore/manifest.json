@@ -1,0 +1,9 @@
+﻿{
+  "name": "FishFix",
+  "version_number": "1.0.0",
+  "website_url": "",
+  "description": "Fixing the issues with picking up fish on the PTB. Will remove when fixed in the base game.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.1901"
+  ]
+}
