@@ -22,5 +22,7 @@ For Questions or Comments, find me in the Odin Plus Team Discord or in mine:
 ***
 
 > # Update Information (Latest listed first)
+> ### v1.0.1
+> - Fixed the vanilla "bug" with the stack size. They forced the stack of the fish to be 1, regardless of the fact the stack was 8 while in your inventory. If you dropped the item you'd only get 1 fish back no matter what. This is now fixed.
 > ### v1.0.0
 > - Initial Release

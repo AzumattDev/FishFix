@@ -12,7 +12,7 @@ namespace FishFix
     public class FishFixPlugin : BaseUnityPlugin
     {
         internal const string ModName = "FishFix";
-        internal const string ModVersion = "1.0.0";
+        internal const string ModVersion = "1.0.1";
         internal const string Author = "Azumatt";
         private const string ModGUID = Author + "." + ModName;
         private readonly Harmony _harmony = new(ModGUID);
@@ -28,12 +28,23 @@ namespace FishFix
     }
 
     [HarmonyPatch(typeof(Fish), nameof(Fish.Awake))]
-    static class Fish_Awake_Patch
+    static class FishAwakePatch
     {
         static void Postfix(Fish __instance)
         {
             if (__instance.m_pickupItem != null) return;
             __instance.m_pickupItem = __instance.gameObject;
+            if (__instance == null) return;
+            __instance.m_pickupItemStackSize = __instance.gameObject.GetComponent<ItemDrop>().m_itemData.m_stack;
+        }
+    }
+
+    [HarmonyPatch(typeof(Fish), nameof(Fish.onDrop))]
+    static class FishOnDropPatch
+    {
+        static void Postfix(Fish __instance, ItemDrop item)
+        {
+            __instance.m_pickupItemStackSize = item.m_itemData.m_stack;
         }
     }
 }
